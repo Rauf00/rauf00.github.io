@@ -1,4 +1,3 @@
-console.log('hi')
 window.addEventListener('df-response-received', (event) => {
 // Loop through all the messages
 event.detail.data.messages.forEach(message => {
@@ -9,6 +8,16 @@ event.detail.data.messages.forEach(message => {
         // Update the actionLink to be based on the title
         citation.actionLink = `https://portal.variantperception.com/providers/vp-research/research/${encodeURIComponent(citation.title)}`;
     });
+
+    // Remove citations with duplicated titles
+    links = new Set()
+    message.citations = message.citations.filter(citation => {
+        if(!links.has(citation.title)){
+            links.add(citation.title)
+            return true
+        }
+        return false
+    })
     }
 });
 
