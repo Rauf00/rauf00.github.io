@@ -5,24 +5,8 @@
 </body>
 <link rel="stylesheet"
   href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
-<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js">
-  window.addEventListener('df-response-received', (event) => {
-    // Loop through all the messages
-    event.detail.data.messages.forEach(message => {
-      // Check if the message has citations
-      if (message.citations && Array.isArray(message.citations)) {
-        // Loop through each citation
-        message.citations.forEach(citation => {
-          // Update the actionLink to be based on the title
-          citation.actionLink = `https://portal.variantperception.com/providers/vp-research/research/${encodeURIComponent(citation.title)}`;
-        });
-      }
-    });
-
-    // Log the updated messages (optional, for debugging purposes)
-    console.log('Updated messages:', event.detail.data.messages);
-  });
-</script>
+<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+<script src="script.js"></script>
 <df-messenger project-id="vp-analysis-dev" agent-id="91638abb-f9ad-4405-9281-f3e3e4992626" language-code="en"
   max-query-length="-1">
   <df-messenger-chat-bubble chat-title="VP Chatbot">
